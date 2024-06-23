@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Like Hero to Zero - IPWA02-01 Fallstudie</title>
+   <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+   <header>
+      <h1>Like Hero to Zero - CO2-Emissionen im Blick</h1>
+   </header>
+   <nav>
+      <ul>
+         <li><a href="index.xhtml">Startseite</a></li>
+         <li><a href="emissions_table.xhtml">Emissions Table</a></li>
+         <li><a href="backend.xhtml">Backend</a></li>
+      </ul>
+   </nav>
+   <main>
+      <h2>Willkommen!</h2>
+         <h:form>
+            <p:dataTable var="tempEmission"
+                         value="#{frontendController.emissions}"
+                         emptyMessage="no Data found!"
+                         filteredValue="#{frontendController.filteredEmissions}"
+                         globalFilterOnly="#{frontendController.globalFilterOnly}">
+               <p:column headerText="Country" sortBy="#{tempEmission.country}" filterBy="#{tempEmission.country}">
+                  <h:outputText value="#{tempEmission.country}"/>
+               </p:column>
+               <p:column headerText="CO2 Emission" sortBy="#{tempEmission.co2}">
+                  <h:outputText value="#{tempEmission.co2}"/>
+               </p:column>
+               <p:column headerText="Year" sortBy="#{tempEmission.year}">
+                  <h:outputText value="#{tempEmission.year}"/>
+               </p:column>
+            </p:dataTable>
+         </h:form>
+      </main>
+   </h:body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Like Hero to Zero - IPWA02-01 Fallstudie</title>
+    <h:outputText value="#{loginController.checkLogin()}"/>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+    <header>
+        <h1>Like Hero to Zero - CO2-Emissionen im Blick</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.xhtml">Startseite</a></li>
+            <li><a href="emissions_table.xhtml">Emissions Table</a></li>
+            <li><a href="backend.xhtml">Backend</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Backend - Neue Emissionen eintragen</h2>
+        <h:form style="margin-top: 10px">
+            <h:panelGrid columns="3">
+                <h:outputLabel>Country: </h:outputLabel>
+                <h:inputText value="#{emission.country}" id="country" label="Country" required="true" requiredMessage="Country is mandatory!"/>
+                <h:message for="country" styleClass="error"/>
+                <h:outputLabel>CO2-Emission (mit .): </h:outputLabel>
+                <h:inputText value="#{emission.co2}" id="co2" label="CO2-Emission" required="true" requiredMessage="CO2 Value is mandatory!"/>
+                <h:message for="co2" styleClass="error"/>
+                <h:outputLabel>Year: </h:outputLabel>
+                <h:inputText value="#{emission.year}" id="year" label="Year" required="true" requiredMessage="Year is mandatory!"/>
+                <h:message for="year" styleClass="error"/>
+                <h:commandButton value="Save" action="#{backendController.addEmission(emission)}"/>
+            </h:panelGrid>
+        </h:form>
+    </main>
+</h:body>
+</html>
